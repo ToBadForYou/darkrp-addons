@@ -1,0 +1,21 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/sterling/vb_walls_defuse"
+	$bumpmap "models/sterling/vb_walls_norm"
+	$phongexponenttexture "models/sterling/green"
+	
+	$phong "1"
+	$phongboost "5"
+	$phongfresnelranges "[0.3 0.75 1.00]"
+	$phongalbedotint "1"
+	
+	$envmap "models/sterling/softsilver.hdr"
+//	$envmap "env_cubemap"	
+	$normalmapalphaenvmapmask "1"
+	$envmapfresnel "1"
+	$envmaptint "[0.05 0.05 0.05]"
+	
+	$color2 "[0.25 0.25 0.25]"
+	$blendtintbybasealpha "1"	
+	
+}

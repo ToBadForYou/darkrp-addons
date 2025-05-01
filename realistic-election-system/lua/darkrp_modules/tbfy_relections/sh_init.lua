@@ -1,0 +1,21 @@
+TEAM_CANDIDATE = DarkRP.createJob("Political Candidate", {
+    color = Color(100, 200, 20, 255),
+    model = {
+		"models/player/hostage/hostage_01.mdl",
+		"models/player/hostage/hostage_02.mdl",
+		"models/player/hostage/hostage_03.mdl",
+        "models/player/hostage/hostage_04.mdl",
+		"models/player/kleiner.mdl",
+    },
+    description = [[Attend political debates and meetings to eventually become the mayor.]],
+    weapons = {},
+    command = "policitalcandidate",
+    max = 10,
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Citizens",
+	customCheck = function(ply) return RES_Candidates[ply:SteamID()] end,
+	CustomCheckFailMsg = "Sign up for the election at the NPC",
+})

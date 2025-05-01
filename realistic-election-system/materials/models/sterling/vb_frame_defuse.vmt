@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/sterling/vb_frame_defuse"
+	$bumpmap "models/sterling/vb_frame_norm"
+	$phong 1
+	$phongfresnelranges "[10 0.9 5]"
+	$phongexponent 100
+	$phongboost 0.05
+	$nodecal 1
+}
