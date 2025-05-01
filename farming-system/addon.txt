@@ -1,0 +1,10 @@
+ "AddonInfo"
+ {
+    "name"                "Farming System"
+    "version"             "1.2.0"
+    "up_date"             "2021"
+    "author_name"         "ToBadForYou"
+    "author_email"        "tobadforyou@outlook.com"
+    "author_url"	  "None"
+    "info"                "A farming mod."
+ }

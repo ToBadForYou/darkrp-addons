@@ -1,0 +1,10 @@
+ "AddonInfo"
+ {
+    "name"                "Perma Weapons"
+    "version"             "1.3.0"
+    "up_date"             "2020"
+    "author_name"         "ToBadForYou"
+    "author_email"        "tobadforyou@outlook.com"
+    "author_url"	  "None"
+    "info"                "A perma weapons system."
+ }

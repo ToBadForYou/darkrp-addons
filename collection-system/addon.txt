@@ -1,0 +1,10 @@
+ "AddonInfo"
+ {
+    "name"                "Collection System"
+    "version"             "1.1.2"
+    "up_date"             "2017"
+    "author_name"         "ToBadForYou"
+    "author_email"        "tobadforyou@outlook.com"
+    "author_url"	  "None"
+    "info"                "A system used to collect items in order to gain rewards, inspired by Stardew Valley."
+ }
