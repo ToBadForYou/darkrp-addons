@@ -1,0 +1,10 @@
+ "AddonInfo"
+ {
+    "name"                "TBFY Shared"
+    "version"             "2.0.3"
+    "up_date"             "2020"
+    "author_name"         "ToBadForYou"
+    "author_email"        "tobadforyou@outlook.com"
+    "author_url"	  "None"
+    "info"                "Shared stuff for my addons"
+ }
