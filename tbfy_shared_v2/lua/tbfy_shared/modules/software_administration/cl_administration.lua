@@ -7,53 +7,53 @@ function PANEL:Init()
 	self.PIcon = vgui.Create("ModelImage", self)
 
 	self.Wanted = vgui.Create("tbfy_button", self)
-  self.Wanted:SetBText(TBFY_GetLang("Wanted"))
-  self.Wanted.DoClick = function()
-    local Req = nil
-    if !self.Wanted.Status then
-  	   Req = vgui.Create("tbfy_comp_reqdata")
-    end
+	self.Wanted:SetBText(TBFY_GetLang("Wanted"))
+	self.Wanted.DoClick = function()
+		local Req = nil
+		if !self.Wanted.Status then
+			Req = vgui.Create("tbfy_comp_reqdata")
+		end
 		local Func = function()
 			net.Start("tbfy_computer_run")
 				net.WriteString(self.Parent.MainP.SoftID)
 				net.WriteString("")
 				net.WriteString("Wanted")
 				net.WriteEntity(self.Player)
-        if IsValid(Req) then
-  				net.WriteString(Req.TextEntry:GetValue())
-        end
+				if IsValid(Req) then
+					net.WriteString(Req.TextEntry:GetValue())
+				end
 			net.SendToServer()
 		end
-    if Req then
-  		Req:Setup(TBFY_GetLang("SetWanted"), "Reason", "OK", true, "Cancel", "String", Func)
-    else
-      Func()
-    end
+		if Req then
+			Req:Setup(TBFY_GetLang("SetWanted"), "Reason", "OK", true, "Cancel", "String", Func)
+		else
+			Func()
+		end
 	end
 
 	self.Warrant = vgui.Create("tbfy_button", self)
 	self.Warrant:SetBText(TBFY_GetLang("Warrant"))
-  self.Warrant.DoClick = function()
-    local Req = nil
-    if !self.Warrant.Status then
-  	   Req = vgui.Create("tbfy_comp_reqdata")
-    end
+  	self.Warrant.DoClick = function()
+		local Req = nil
+		if !self.Warrant.Status then
+		Req = vgui.Create("tbfy_comp_reqdata")
+		end
 		local Func = function(text)
 			net.Start("tbfy_computer_run")
 				net.WriteString(self.Parent.MainP.SoftID)
 				net.WriteString("")
 				net.WriteString("Warrant")
 				net.WriteEntity(self.Player)
-        if IsValid(Req) then
-  				net.WriteString(text)
-        end
+				if IsValid(Req) then
+						net.WriteString(text)
+				end
 			net.SendToServer()
 		end
-    if Req then
-  		Req:Setup(TBFY_GetLang("SetWarrant"), "Reason", "OK", true, "Cancel", "String", Func)
-    else
-      Func()
-    end
+		if Req then
+			Req:Setup(TBFY_GetLang("SetWarrant"), "Reason", "OK", true, "Cancel", "String", Func)
+		else
+			Func()
+		end
 	end
 
 	self.Gunlicense = vgui.Create("tbfy_button", self)
@@ -78,49 +78,49 @@ function PANEL:SetPlayer(Player)
 		surface.DrawOutlinedRect(0,0,W,H)
 	end
 
-  self.Wanted.Status = !Player:isWanted()
-  self.Wanted.Think = function()
+ 	self.Wanted.Status = !Player:isWanted()
+  	self.Wanted.Think = function()
 		if IsValid(self.Player) then
-	    local Wanted = self.Player:isWanted()
-	    if Wanted != self.Wanted.Status then
-	      if !Wanted then
-	        self.Wanted:SetBText("Wanted")
-	      else
-	        self.Wanted:SetBText("Unwanted")
-	      end
-	      self.Wanted.Status = Wanted
-	    end
+				local Wanted = self.Player:isWanted()
+				if Wanted != self.Wanted.Status then
+				if !Wanted then
+					self.Wanted:SetBText("Wanted")
+				else
+					self.Wanted:SetBText("Unwanted")
+				end
+				self.Wanted.Status = Wanted
+			end
 		end
-  end
+	end
 
-  self.Warrant.Status = !Player:DKRP_isWarranted()
-  self.Warrant.Think = function()
+	self.Warrant.Status = !Player:DKRP_isWarranted()
+	self.Warrant.Think = function()
 		if IsValid(self.Player) then
-	    local Warrant = self.Player:DKRP_isWarranted()
-	    if Warrant != self.Warrant.Status then
-	      if !Warrant then
-	        self.Warrant:SetBText("Warrant")
-	      else
-	        self.Warrant:SetBText("Unwarrant")
-	      end
-	      self.Warrant.Status = Warrant
-	    end
+			local Warrant = self.Player:DKRP_isWarranted()
+			if Warrant != self.Warrant.Status then
+				if !Warrant then
+					self.Warrant:SetBText("Warrant")
+				else
+					self.Warrant:SetBText("Unwarrant")
+				end
+				self.Warrant.Status = Warrant
+			end
 		end
-  end
+  	end
 
   self.Gunlicense.Status = !Player:getDarkRPVar("HasGunlicense")
   self.Gunlicense.Think = function()
 		if IsValid(self.Player) then
-	    local Gunlic = self.Player:getDarkRPVar("HasGunlicense")
-	    if Gunlic != self.Gunlicense.Status then
-	      if !Gunlic then
-	        self.Gunlicense:SetBText("Grant Gunlicense")
-	      else
-	        self.Gunlicense:SetBText("Revoke Gunlicense")
-	      end
-	      self.Gunlicense.Status = Gunlic
-	    end
-	  end
+			local Gunlic = self.Player:getDarkRPVar("HasGunlicense")
+			if Gunlic != self.Gunlicense.Status then
+				if !Gunlic then
+					self.Gunlicense:SetBText("Grant Gunlicense")
+				else
+					self.Gunlicense:SetBText("Revoke Gunlicense")
+				end
+				self.Gunlicense.Status = Gunlic
+			end
+		end
 	end
 end
 
@@ -425,30 +425,33 @@ function PANEL:Init()
 		local But = vgui.Create("tbfy_button", self.ActionList)
 		But:SetBText(v.Name)
 		But.DoClick = function()
-      local Req = nil
-      local ReqD = v.ReqData
-      if ReqD then
-    	   Req = vgui.Create("tbfy_comp_reqdata")
-      end
-  		local Func = function()
-  			net.Start("tbfy_computer_run")
-  				net.WriteString(self.MainP.SoftID)
-  				net.WriteString("Action")
-  				net.WriteFloat(k)
-          if IsValid(Req) then
-            if ReqD.Type == "Numeric" then
-              net.WriteFloat(tonumber(Req.TextEntry:GetValue()))
-            else
-              net.WriteString(Req.TextEntry:GetValue())
-            end
-          end
-  			net.SendToServer()
-  		end
-      if Req then
-    		Req:Setup(ReqD.Title, ReqD.Text, ReqD.But1, true, ReqD.But2, ReqD.Type, Func)
-      else
-        Func()
-      end
+			local Req = nil
+			local ReqD = v.ReqData
+			if ReqD then
+				Req = vgui.Create("tbfy_comp_reqdata")
+			end
+			local Func = function()
+				net.Start("tbfy_computer_run")
+					net.WriteString(self.MainP.SoftID)
+					net.WriteString("Action")
+					net.WriteFloat(k)
+					if IsValid(Req) then
+						if ReqD.Type == "Numeric" then
+							local val = tonumber(Req.TextEntry:GetValue())
+							if val then
+              					net.WriteFloat(val)
+							end
+						else
+							net.WriteString(Req.TextEntry:GetValue())
+						end
+					end
+				net.SendToServer()
+			end
+			if Req then
+				Req:Setup(ReqD.Title, ReqD.Text, ReqD.But1, true, ReqD.But2, ReqD.Type, Func)
+			else
+				Func()
+			end
 		end
 		self.ButtonTBL[k] = But
 	end
