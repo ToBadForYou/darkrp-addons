@@ -1,5 +1,5 @@
 
-TBFY_SH.Version = "2.0.3"
+TBFY_SH.Version = "2.0.4"
 
 local ModulesFolder = "tbfy_shared/modules"
 local files, directories = file.Find(ModulesFolder .. "/*", "LUA")
@@ -31,8 +31,6 @@ end
 
 if SERVER then
   resource.AddWorkshop("1900873878")
-  resource.AddWorkshop("651345750")
-
   //Just checks lastest version
   hook.Add("PlayerConnect", "tbfy_check_version", function()
     local gitlink = "https://raw.githubusercontent.com/ToBadForYou/tbfy_shared/master/version.txt"

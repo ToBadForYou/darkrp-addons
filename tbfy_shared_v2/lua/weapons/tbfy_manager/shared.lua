@@ -19,7 +19,6 @@ SWEP.HoldType = "normal";
 SWEP.ViewModelFlip = false
 SWEP.AnimPrefix	 = "normal"
 SWEP.Category = "ToBadForYou"
-SWEP.UID = 76561197989708503
 
 SWEP.Spawnable = true
 SWEP.AdminSpawnable = true
@@ -32,14 +31,14 @@ SWEP.Secondary.ClipSize = -1
 SWEP.Secondary.DefaultClip = 0
 SWEP.Secondary.Automatic = false
 SWEP.Secondary.Ammo = ""
+SWEP.CurEnt = nil
+SWEP.ETbl = nil
+SWEP.CurStage = 1
 
 function SWEP:Initialize()
-	self.CurEnt = nil
 	self:SetHoldType("normal")
-	self.ETbl = nil
-	self.CurStage = 1
 	if CLIENT then
-		LocalPlayer().TBFY_LastEntData = nil
+		LocalPlayer().TBFY_LastEntData = LocalPlayer().TBFY_LastEntData || nil
 	end
 end
 
@@ -118,6 +117,9 @@ if CLIENT then
 				self.GhostEnt:SetNoDraw(false)
 				self.GhostEnt:SetModel(ETbl.M)
 			end
+		end
+		if self.ETbl and self.ETbl.CFuncInit then
+			self.ETbl.CFuncInit(self)
 		end
 	end
 

@@ -6,9 +6,7 @@ TBFY_SH.GArchives_Updated = TBFY_SH.GArchives_Updated or {}
 function TBFY_SH:AddToGArchive(Type, SID, Actor, Reason)
 	local Time = os.time()
 	Type = tonumber(Type)
-	print("old", Reason)
 	Reason = sql.SQLStr(Reason)
-	print("new", Reason)
 	sql.Query("INSERT INTO tbfy_archives (`steamid`, `type`, `actor`, `reason`, `time`) VALUES('"..SID.."', '"..Type.."', '"..Actor.."', "..Reason..", '"..Time.."')")
 	TBFY_SH.GArchives[SID][Type] = TBFY_SH.GArchives[SID][Type] or {}
 	table.insert(TBFY_SH.GArchives[SID][Type], {actor = Actor, reason = Reason, time = Time})

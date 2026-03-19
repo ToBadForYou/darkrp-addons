@@ -552,10 +552,12 @@ function PANEL:Paint(W,H)
 		local TextW, TextH = surface.GetTextSize(self.Text)
 		TextW = TextW + 10
 		TextH = TextH + 1
-		DisableClipping(true)
-		draw.RoundedBox(4, W/2-TextW/2, -TextH, TextW, TextH, Color(0,0,0,255))
-		draw.SimpleText(self.Text, self.Font, W/2, -1, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
-		DisableClipping(false)
+		if self.DisplayHoverText then
+			DisableClipping(true)
+			draw.RoundedBox(4, W/2-TextW/2, -TextH, TextW, TextH, Color(0,0,0,255))
+			draw.SimpleText(self.Text, self.Font, W/2, -1, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
+			DisableClipping(false)
+		end
 	end
 
 	draw.SimpleText(self.Text, self.Font, X, Y, Color(0, 0, 0, 255), self.AlignX, self.AlignY)

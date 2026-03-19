@@ -3,11 +3,11 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 function ENT:Initialize()
-	self:SetModel("models/props/de_inferno/tableantique.mdl")
-	self:PhysicsInit(SOLID_VPHYSICS)
-	self:SetMoveType(MOVETYPE_VPHYSICS)
-	self:SetSolid(SOLID_VPHYSICS)
-	self:SetUseType(SIMPLE_USE)
+	self.Entity:SetModel("models/props/de_inferno/tableantique.mdl")
+	self.Entity:PhysicsInit(SOLID_VPHYSICS)
+	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
+	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self.Entity:SetUseType(SIMPLE_USE)
 
 	local Phys = self:GetPhysicsObject()
 	if Phys then
@@ -22,7 +22,7 @@ function ENT:Initialize()
 	Angles:RotateAroundAxis(self:GetUp(), 90)
 	Chair:SetAngles(Angles)
 	Chair:SetParent(self)
-	Chair:SetModel("models/mark2580/gmod_seat/chair_plastic01.mdl")
+	Chair:SetModel(ChairDB.Model)
 	Chair:SetKeyValue("vehiclescript", "scripts/vehicles/prisoner_pod.txt");
 	Chair:Spawn()
 	Chair.PCChair = true
@@ -131,11 +131,7 @@ function ENT:Use(activator, caller)
 	local InUse = self.Chair:GetDriver()
 	if !InUse:IsPlayer() then
 		activator.CanEChairPC = true
-		//if SVMOD then
-			//self.Chair:SV_EnterVehicle(activator)
-		//else
-			activator:EnterVehicle(self.Chair)
-		//end
+		activator:EnterVehicle(self.Chair)
 		self.CPlayer = activator
 		activator.CanEChairPC = false
 

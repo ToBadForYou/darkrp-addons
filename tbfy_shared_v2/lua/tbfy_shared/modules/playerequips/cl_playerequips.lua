@@ -56,16 +56,16 @@ net.Receive("tbfy_TogglePEquip", function()
 	local EID, Equip, SID = net.ReadString(), net.ReadBool(), net.ReadString()
 
 	TBFY_SH.PEquips[SID] = TBFY_SH.PEquips[SID] or {}
-	if TBFY_SH.PEquips[SID][EID] then
-		local OCent = TBFY_SH.PEquips[SID][EID].CEnt
-		if IsValid(OCent) then
-			OCent:Remove()
-		end
-		TBFY_SH.PEquips[SID][EID] = nil
-	end
-		
 	if Equip then
 		TBFY_SH.PEquips[SID][EID] = {CEnt = nil, EID = EID}
+	else
+		if TBFY_SH.PEquips[SID][EID] then
+			local OCent = TBFY_SH.PEquips[SID][EID].CEnt
+			if IsValid(OCent) then
+				OCent:Remove()
+			end
+			TBFY_SH.PEquips[SID][EID] = nil
+		end
 	end
 end)
 

@@ -437,10 +437,7 @@ function PANEL:Init()
   				net.WriteFloat(k)
           if IsValid(Req) then
             if ReqD.Type == "Numeric" then
-							local val = tonumber(Req.TextEntry:GetValue())
-							if val then
-              	net.WriteFloat(val)
-							end
+              net.WriteFloat(tonumber(Req.TextEntry:GetValue()))
             else
               net.WriteString(Req.TextEntry:GetValue())
             end

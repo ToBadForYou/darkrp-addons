@@ -19,7 +19,6 @@ SWEP.HoldType = "normal";
 SWEP.ViewModelFlip = false
 SWEP.AnimPrefix	 = "normal"
 SWEP.Category = "ToBadForYou"
-SWEP.UID = 76561197989708503
 
 SWEP.Spawnable = true
 SWEP.AdminSpawnable = true

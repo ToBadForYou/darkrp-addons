@@ -31,6 +31,10 @@ function TBFY_SH.SetupCMDButton(self, CatName, Name, CMD, CFunc)
 	TBFY_SH.SetupTbl[CatName].Buttons[Name] = {CMD = CMD, CFunc = CFunc}
 end
 
+function TBFY_SH.SetupCustomFunctionInit(self, CatName, Entity, Func)
+	TBFY_SH.SetupTbl[CatName].Ents[Entity].CFuncInit = Func
+end
+
 net.Receive("tbfy_update_computer", function()
 	local Menu = LocalPlayer().TBFY_EditComputer
 	if IsValid(Menu) then

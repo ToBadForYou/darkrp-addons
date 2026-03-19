@@ -58,7 +58,7 @@ function TBFY_SH:UpdateCAccountData(SID, Type)
 
 	local Len = string.len(SQLString)
 	local FSQLString = string.sub(SQLString, 1, Len-1)
-	sql.Query("UPDATE tbfy_computer SET " .. FSQLString .. " WHERE steamid='" .. SID .. "'")
+	sql.Query("UPDATE tbfy_computer SET " .. FSQLString .. " WHERE steamid='"..SID.."'")
 end
 
 function TBFY_SH:CompileCAccountPrograms(SID)
