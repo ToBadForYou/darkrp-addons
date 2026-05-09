@@ -23,7 +23,6 @@ SWEP.ViewModelFOV = 62
 SWEP.ViewModelFlip = false
 SWEP.AnimPrefix	 = "melee"
 SWEP.Category = "ToBadForYou"
-SWEP.UID = {{ user_id }}
 
 SWEP.Spawnable = true
 SWEP.AdminSpawnable = true

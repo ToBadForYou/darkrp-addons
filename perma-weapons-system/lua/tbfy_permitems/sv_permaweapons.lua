@@ -82,7 +82,6 @@ function PermWeaponsNPCSpawn()
 end
 hook.Add( "InitPostEntity", "PermWeaponsNPCSpawn", PermWeaponsNPCSpawn)
 
-local UID = 76561197989708503
 function PLAYER:LoadPermProfile()
 	self.PermWeapons = {}
 	self.PermEntities = {}
@@ -134,7 +133,7 @@ end
 
 hook.Add("PlayerInitialSpawn", "perm_loadplayer", function(Player)
   	timer.Simple(3, function()
-		if UID and IsValid(Player) then
+		if IsValid(Player) then
 			Player:LoadPermProfile()
 		end
 	end)

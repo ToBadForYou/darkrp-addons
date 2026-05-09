@@ -2,7 +2,6 @@ TOOL.Category		= "ToBadForYou"
 TOOL.Name		= "#Farming Locations" 
 TOOL.Command		= nil 
 TOOL.ConfigName		= ""
-TOOL.UID = {{ user_id }}
 
 TOOL.Information = {
 	{name = "left", stage = 0},

@@ -30,7 +30,6 @@ local RES_Conf = RES_Config
 RES_CandidatesInfo = RES_CandidatesInfo or {}
 RES_PhaseTimer = RES_PhaseTimer or 0
 
-local UID = 76561197989708503
 function PLAYER:RES_PlacePoster(Pos, Ang)
 	local PostInfo = self.RES_Posters[1]
 
@@ -80,15 +79,13 @@ function PLAYER:RES_GivePoster(PName, PText, DType, BGC, DC)
 end
 
 function RES_UpdatePhase(Phase,Time)
-	if UID then
-		RES_Phase = Phase
-		RES_PhaseTimer = Time
+	RES_Phase = Phase
+	RES_PhaseTimer = Time
 
-		net.Start("res_update_phase")
-			net.WriteFloat(Phase)
-			net.WriteFloat(Time)
-		net.Broadcast()
-	end
+	net.Start("res_update_phase")
+		net.WriteFloat(Phase)
+		net.WriteFloat(Time)
+	net.Broadcast()
 end
 
 function RES_DepositVote(Ballot)

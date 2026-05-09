@@ -17,7 +17,6 @@ SWEP.Purpose = ""
 
 SWEP.HoldType = "normal";
 SWEP.WorldModel = ""
-SWEP.UID = 76561197989708503
 SWEP.AnimPrefix	 = "normal"
 SWEP.Category = "ToBadForYou"
 
