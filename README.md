@@ -6,3 +6,9 @@ You may also check out my [surrender system](https://github.com/ToBadForYou/TBFY
 Requires version 2.5.0+ version of DarkRP and CSS content to be installed
 
 **NOTE: These addons are not allowed to be used for commercial use.**
+
+# Found a bug?
+Please open an issue with bug report template.
+
+# Got a feature request?
+Please open an issue with feature request template.
