@@ -1,19 +1,8 @@
 
 --[[
-You can now set computers to be: Government, Private or Public
-You can now select time format for the PC in the settings menu (when logged in)
-You can now remove entities related to my addons with remover in Setup SWEP -> TBFY_SHARED -> Remover
-FalkOS now will properly organize softwares so it stays on the screen
-Hovering on text in archives will now display the whole text as a "popup"
-Text no longer write over eachother in archives
-You can now setup text input related configs ingame (For example model paths)
-You can now setup text options related configs ingame (For example if a config has different "modes", 0 = Nothing, 1 = Wanted, 2 = Warranted)
-Optimized archives, will now send a lot less data (only sends if server data is changed) and caches the data on the client
-Disconnected players are now logged out of computers
-Now properly removes player equipment models on disconnection
-Now checks github for lastest version (hopefully less will have issues with this)
-Added chinese and french language
-Fixed Msg error
+Fixed printing outdated for newer versions of TBFY_SHARED
+Entities can be hidden from being selected in setup tool
+Code refactoring/improvements
 
 Configs added:
 ]]

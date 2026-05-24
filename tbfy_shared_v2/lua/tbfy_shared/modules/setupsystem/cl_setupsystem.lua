@@ -7,8 +7,8 @@ function TBFY_SH.SetupCategory(self, CatName)
 	TBFY_SH.SetupTbl[CatName].Buttons = TBFY_SH.SetupTbl[CatName].Buttons or {}
 end
 
-function TBFY_SH.SetupEntity(self, CatName, Name, Entity, Model, Offs, SEnts, NoGEnt, AngAdj)
-	TBFY_SH.SetupTbl[CatName].Ents[Entity] = {N = Name, M = Model, CFuncL = nil, CFuncR = nil, CFuncDraw = nil, CFuncThink = nil, Offset = Offs, SEnts = SEnts, NoGhost = NoGEnt, AngAdj = AngAdj}
+function TBFY_SH.SetupEntity(self, CatName, Name, Entity, Model, Offs, SEnts, NoGEnt, NotSelectable)
+	TBFY_SH.SetupTbl[CatName].Ents[Entity] = {N = Name, M = Model, CFuncL = nil, CFuncR = nil, CFuncDraw = nil, CFuncThink = nil, Offset = Offs, SEnts = SEnts, NoGhost = NoGEnt, NotSelectable = NotSelectable}
 end
 
 function TBFY_SH.SetupCustomFunctionL(self, CatName, Entity, Func)
@@ -129,7 +129,7 @@ function PANEL:PaintOver(W,H)
 	local TW, TH = surface.GetTextSize(N)
 	TW = TW + 4
 	draw.RoundedBox(4, W/2-TW/2, H-TH, TW, TH, Derma.HeaderColor)
-	draw.SimpleText(N, "tbfy_entname", W/2, H, Color( 255, 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
+	draw.SimpleText(N, "tbfy_entname", W/2, H, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
 end
 vgui.Register("tbfy_DEnt", PANEL)
 
@@ -141,7 +141,7 @@ function PANEL:Init()
     self.TopDPanel = vgui.Create("DPanel", self)
 	self.TopDPanel.Paint = function(selfp, W,H)
 		draw.RoundedBoxEx(8, 0, 0, W, H, Derma.HeaderColor, true, true, false, false)
-		draw.SimpleText("TBFY - Setup Tool", "tbfy_header", W/2, H/2, Color( 255, 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText("TBFY - Setup Tool", "tbfy_header", W/2, H/2, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	self.Sheet = vgui.Create("tbfy_DColumnSheet", self)
@@ -170,6 +170,7 @@ function PANEL:InitSetup()
 		EntCat:SetContents(DList)
 
 		for Class, ETbl in pairs(v.Ents) do
+			if ETbl.NotSelectable then continue end
 			local EntD = vgui.Create("tbfy_DEnt" , DList)
 			EntD:SetupIcon(Class, ETbl)
 			DList:AddItem(EntD)
@@ -236,7 +237,7 @@ function PANEL:Init()
 	self.TopDPanel = vgui.Create("DPanel", self)
 	self.TopDPanel.Paint = function(selfp, W,H)
 		draw.RoundedBoxEx(8, 0, 0, W, H, Derma.HeaderColor, true, true, false, false)
-		draw.SimpleText("Entity Information", "tbfy_header", W/2, H/2, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText("Entity Information", "tbfy_header", W/2, H/2, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	self.SEType = vgui.Create("DComboBox", self)
@@ -277,7 +278,7 @@ end
 
 function PANEL:Paint(W,H)
 	draw.RoundedBoxEx(4, 0, Derma.HeaderH, W, H-Derma.HeaderH, Derma.MainPanelColor, false, false, true, true)
-	draw.SimpleText("Entity Type:", "tbfy_header", W/2-25, Derma.HeaderH+17.5, Color(0, 0, 0, 255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
+	draw.SimpleText("Entity Type:", "tbfy_header", W/2-25, Derma.HeaderH+17.5, color_black, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
 end
 vgui.Register("tbfy_select_entity_others", PANEL, "DFrame")
 
@@ -293,7 +294,7 @@ function PANEL:Init()
 	self.TopDPanel = vgui.Create("DPanel", self)
 	self.TopDPanel.Paint = function(selfp, W,H)
 		draw.RoundedBoxEx(8, 0, 0, W, H, Derma.HeaderColor, true, true, false, false)
-		draw.SimpleText("Entity Information", "tbfy_header", W/2, H/2, Color( 255, 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText("Entity Information", "tbfy_header", W/2, H/2, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	self.SComp = vgui.Create("DComboBox", self)
@@ -356,9 +357,9 @@ end
 
 function PANEL:Paint(W,H)
 	draw.RoundedBoxEx(4, 0, Derma.HeaderH, W, H-Derma.HeaderH, Derma.MainPanelColor, false, false, true, true)
-	draw.SimpleText("Computer:", "tbfy_header", W/2-25, Derma.HeaderH+17.5, Color(0, 0, 0, 255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
-	draw.SimpleText("Entity Type:", "tbfy_header", W/2-25, Derma.HeaderH+57.5, Color(0, 0, 0, 255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
-	draw.SimpleText("Identifier:", "tbfy_header", W/2-25, Derma.HeaderH+97.5, Color(0, 0, 0, 255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
+	draw.SimpleText("Computer:", "tbfy_header", W/2-25, Derma.HeaderH+17.5, color_black, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
+	draw.SimpleText("Entity Type:", "tbfy_header", W/2-25, Derma.HeaderH+57.5, color_black, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
+	draw.SimpleText("Identifier:", "tbfy_header", W/2-25, Derma.HeaderH+97.5, color_black, TEXT_ALIGN_RIGHT, TEXT_ALIGN_TOP)
 end
 vgui.Register("tbfy_select_entity", PANEL, "DFrame")
 
@@ -376,7 +377,7 @@ function PANEL:Init()
 	self.TopDPanel = vgui.Create("DPanel", self)
 	self.TopDPanel.Paint = function(selfp, W,H)
 		draw.RoundedBoxEx(4, 0, 0, W, H, Derma.HeaderColor, true, true, false, false)
-		draw.SimpleText("Computer Information", "tbfy_header", W/2, H/2, Color( 255, 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		draw.SimpleText("Computer Information", "tbfy_header", W/2, H/2, color_white, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 
 	self.SEName = vgui.Create("DTextEntry", self)

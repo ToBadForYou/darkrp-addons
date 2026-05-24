@@ -317,7 +317,7 @@ hook.Add("tbfy_InitSetup", "tbfy_shared", function()
 		TBFY_SH:SetupCategory(CatName)
 
 		for k,v in pairs(ESaveInfo) do
-			TBFY_SH:SetupEntity(CatName, v.NameS, v.Class, v.ModelS, v.OffSet, v.SEnts, v.NoGEnt)
+			TBFY_SH:SetupEntity(CatName, v.NameS, v.Class, v.ModelS, v.OffSet, v.SEnts, v.NoGEnt, v.NotSelectable)
 			if !v.NoSave && !v.NoSaveButton then
 				TBFY_SH:SetupCMDButton(CatName, v.SaveS, "save_tbfy_ent " .. MFolder .. " " .. k)
 			end

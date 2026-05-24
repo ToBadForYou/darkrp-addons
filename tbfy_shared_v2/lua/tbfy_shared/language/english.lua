@@ -38,6 +38,6 @@ TBFY_SH:AddLanguage("SetWarrant", "Set Warrant")
 TBFY_SH:AddLanguage("IPReset", "IP was successfully reset")
 TBFY_SH:AddLanguage("PasswordReset", "Password was successfully reset")
 TBFY_SH:AddLanguage("SettingsSaved", "Settings successfully saved. (Don't forget to run save command in TBFY Setup Tool)")
-TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared outdated, download lastest version from gmodstore")
+TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared outdated, download latest version from GitHub")
 
 TBFY_SH:AddLanguage("UserDisconnectedLogout", "You were logged out as the owner of this account disconnected from the server")

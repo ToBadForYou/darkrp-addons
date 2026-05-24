@@ -38,6 +38,6 @@ TBFY_SH:AddLanguage("SetWarrant", "设置搜查令")
 TBFY_SH:AddLanguage("IPReset", "IP被成功重置")
 TBFY_SH:AddLanguage("PasswordReset", "密码已成功重置")
 TBFY_SH:AddLanguage("SettingsSaved", "设置成功保存。(别忘了在TBFY设置工具中运行保存命令)")
-TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared已过时，请从gmodstore下载最新的版本")
+TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared已过时，请从GitHub下载最新的版本")
 
 TBFY_SH:AddLanguage("UserDisconnectedLogout", "You were logged out as the owner of this account disconnected from the server")

@@ -81,39 +81,41 @@ local function EDataToTbl(Ent, SClass, CSaveFunc)
 	return EntIns
 end
 
-concommand.Add("save_tbfy_ent", function(Player, CMD, Args)
-	local AName, EName = Args[1], Args[2]
-	if AName and EName then
-		local AInfo = TBFY_SH.AInfo[AName]
-		if AInfo then
-			if AInfo.ACheck and AInfo.ACheck(Player) then
-				local Inf = AInfo.SEnts[EName]
-				if Inf then
-					local EntsTbl = {}
-					if Inf.MultiplyEnts then
-						for index,Ents in pairs(Inf.SEnts) do
-							for k,v in pairs(ents.FindByClass(Ents.Ent)) do
-								local EntIns = EDataToTbl(v, true, Inf.SaveFunc)
-								table.insert(EntsTbl,EntIns)
-							end
-						end
-					else
-						for k,v in pairs(ents.FindByClass(Inf.Class)) do
-							if Inf.Cond(v) then
-								local EntIns = EDataToTbl(v, false, Inf.SaveFunc)
-								table.insert(EntsTbl,EntIns)
-							end
-						end
-					end
-					local CurrentMap = string.lower(game.GetMap())
-					file.Write(AName .. "/" .. Inf.Folder .. "/" .. CurrentMap .. ".txt", util.TableToJSON(EntsTbl))
+concommand.Add("save_tbfy_ent", function(ply, cmd, args)
+	if len(args) < 2 then return end
+	TBFY_SH:SaveEnt(ply, args[1], args[2])
+end)
 
-					TBFY_Notify(Player, 1, 4, string.format(Inf.SavedS,#EntsTbl))
-				end
+function TBFY_SH:SaveEnt(ply, addonName, entityClass)
+	if !addonName || !entityClass then return end
+
+	local addonInfo = TBFY_SH.AInfo[addonName]
+	if !addonInfo || !addonInfo.ACheck || !addonInfo.ACheck(ply) then return end
+
+	local entInfo = addonInfo.SEnts[entityClass]
+	if !entInfo then return end
+
+	local EntsTbl = {}
+	if entInfo.MultiplyEnts then
+		for index,Ents in pairs(entInfo.SEnts) do
+			for k,v in pairs(ents.FindByClass(Ents.Ent)) do
+				local entJson = EDataToTbl(v, true, entInfo.SaveFunc)
+				table.insert(EntsTbl, entJson)
+			end
+		end
+	else
+		for k,v in pairs(ents.FindByClass(entInfo.Class)) do
+			if entInfo.Cond(v) then
+				local entJson = EDataToTbl(v, false, entInfo.SaveFunc)
+				table.insert(EntsTbl, entJson)
 			end
 		end
 	end
-end)
+	local CurrentMap = string.lower(game.GetMap())
+	file.Write(addonName .. "/" .. entInfo.Folder .. "/" .. CurrentMap .. ".txt", util.TableToJSON(EntsTbl))
+
+	TBFY_Notify(ply, 1, 4, string.format(entInfo.SavedS, #EntsTbl))
+end
 
 net.Receive("tbfy_spawn_entity", function(len, Player)
 	if !Player:TBFY_AdminAccess() then return end

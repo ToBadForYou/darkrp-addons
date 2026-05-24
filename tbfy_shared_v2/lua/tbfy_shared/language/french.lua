@@ -39,7 +39,7 @@ TBFY_SH:AddLanguage("SetWarrant", "Mettre un Mandat")
 TBFY_SH:AddLanguage("IPReset", "L'IP a été réinitialisé avec succès")
 TBFY_SH:AddLanguage("PasswordReset", "Le mot de passe a été réinitialisé avec succès")
 TBFY_SH:AddLanguage("SettingsSaved", "Les paramètres ont bien été enregistrés. (N'oubliez pas d'exécuter la commande save dans l'outil de configuration TBFY)")
-TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared obsolète, téléchargez la dernière version depuis gmodstore")
+TBFY_SH:AddLanguage("OutdatedTBFY", "TBFY_Shared obsolète, téléchargez la dernière version depuis GitHub")
 
 
 TBFY_SH:AddLanguage("UserDisconnectedLogout", "Vous étiez déconnecté en tant que propriétaire de ce compte déconnecté du serveur")

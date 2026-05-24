@@ -45,7 +45,11 @@ function TBFY_TimeToString(Time)
 	return string.format("%02i:%02i", m, s)
 end
 
-//Borrowed from DarkRP
+function TBFY_SH:VecToStr(vec)
+    return string.format("%.3f,%.3f,%.3f", vec.x, vec.y, vec.z)
+end
+
+// Borrowed from DarkRP
 function TBFY_isEmpty(vector, ignore, CheckRadie, CheckAll)
     ignore = ignore or {}
 
@@ -69,7 +73,7 @@ function TBFY_isEmpty(vector, ignore, CheckRadie, CheckAll)
     return a and b
 end
 
-//Borrowed from DarkRP
+// Borrowed from DarkRP
 function TBFY_findEmptyPos(pos, ignore, distance, step, area)
     if TBFY_isEmpty(pos, ignore) and TBFY_isEmpty(pos + area, ignore) then
         return pos
