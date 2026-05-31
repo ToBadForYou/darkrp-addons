@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/tbfu_noticeboard/cork_diffuse"
+	"$normalmap" "models/tbfu_noticeboard/cork_normal"
+	"$surfaceprop" "Wood_Panel"
+
+}

@@ -5,6 +5,6 @@
     "up_date"             "2026"
     "author_name"         "ToBadForYou"
     "author_email"        "tobadforyou@outlook.com"
-    "author_url"	        "None"
+    "author_url"	       "None"
     "info"                "Shared stuff for my addons"
  }

@@ -1,0 +1,13 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/tbfu_noticeboard/wood_diffuse"
+	"$normalmap" "models/tbfu_noticeboard/wood_normal"
+	"$surfaceprop" "Wood_Box"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ .2 .2 .2 ]"
+
+$detail detail\wood_detail_01
+$detailscale 10
+$detailblendfactor .7
+$detailblendmode 0
+}
